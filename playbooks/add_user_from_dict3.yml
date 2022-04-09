@@ -17,5 +17,5 @@
       with_dict: "{{ users }}"
     - copy:
         src: "'/tmp/'+{{ item.key }}+'_file'"
-        dest: "'/home/'+{{ item.key }}+'/'+{{ item.key }}+'_file'
+        dest: "'/home/'+{{ item.key }}+'/'+{{ item.key }}+'_file'"
       with_dict: "{{ users }}"
