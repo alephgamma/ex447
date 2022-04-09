@@ -7,6 +7,7 @@
   tasks:
     - debug:
         msg: "{{ lookup('password','/tmp/'+item.key+'_file length=10') }}"
+      with_dict: "{{ users }}"
     - user: 
         name: "{{ item.key }}"
         password: "{{ lookup('file','/tmp/'+item.key+'_file') | password_hash('sha512')}}"
