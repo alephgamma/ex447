@@ -11,5 +11,5 @@
     - user: 
         name: "{{ item.key }}"
         password: "{{ lookup('file','/tmp/'+item.key+'_file') | password_hash('sha512')}}"
-        comment: "{{ item.value.first | title }} {{ item.value.middle[0] | title }}  {{ item.value.last | title }}"
+        comment: "{{ item.value.first | title }} {{ item.value.middle[0] | title }} {{ item.value.last | title }}"
       with_dict: "{{ users }}"
