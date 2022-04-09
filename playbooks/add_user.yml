@@ -1,0 +1,13 @@
+---
+- name: Add users
+  hosts: all
+  become: true
+  vars:
+    users:
+      - billy
+      - joe
+      - jim
+      - bob
+  tasks:
+    - user: 
+        name: "{{ users }}"
