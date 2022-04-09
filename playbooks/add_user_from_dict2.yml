@@ -1,0 +1,15 @@
+---
+- name: Add users
+  hosts: all
+  become: true
+  vars_files:
+    user_dict2.yml
+  tasks:
+    - debug:
+        msg: "{{ lookup('password','/tmp/'+item.key+'_file length=10') }}"
+      with_dict: "{{ users }}"
+    - user: 
+        name: "{{ item.key }}"
+        password: "{{ lookup('file','/tmp/'+item.key+'_file') | password_hash('sha512')}}"
+        comment: "{{ item.first | title }} {{ item.middle[0] | title }}  {{ item.last | title }}"
+      with_dict: "{{ users }}"
