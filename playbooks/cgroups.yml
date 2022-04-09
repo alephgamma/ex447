@@ -1,0 +1,11 @@
+---
+- name: cgroups
+  become: true
+  hosts: all
+  vars:
+    packages:
+      - daemonize
+      - stress
+  tasks:
+    - yum:
+        name: "{{ packages }}"
