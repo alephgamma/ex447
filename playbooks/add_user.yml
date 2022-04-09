@@ -10,4 +10,5 @@
       - bob
   tasks:
     - user: 
-        name: "{{ users }}"
+        name: "{{ item }}"
+      loop: "{{ users }}"
