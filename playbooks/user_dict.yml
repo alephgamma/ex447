@@ -1,0 +1,18 @@
+---
+users:
+  billy:
+    first: william
+    middle: nmi
+    last: last
+  joe:
+    first: joseph
+    middle: mick
+    last: dabomb
+  jim:
+    first: james
+    middle: none
+    last: crash
+  bob:
+    first: robert
+    middle: handsome
+    last: crikey
