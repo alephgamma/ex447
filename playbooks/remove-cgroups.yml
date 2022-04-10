@@ -1,0 +1,9 @@
+---
+- name: remove group services
+  become: true
+  hosts: all
+  tasks:
+     - systemd:
+        name: stress1.service
+        state: stopped
+        enabled: no

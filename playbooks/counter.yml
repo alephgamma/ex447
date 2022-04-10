@@ -1,0 +1,25 @@
+---
+- name: Counter
+  become: true
+  hosts: all
+  vars:
+    count: 1
+  tasks:
+    - name: d1 
+      debug:
+        msg: "{{ count }}"
+    - name: d2 register
+      debug:
+        msg: "{{ count | int + 1 }}"
+      register: count
+    - name: d3 count.msg
+      debug:
+        msg: "{{ count.msg }}"
+    - name: d4 register
+      debug:
+        msg: "{{ count.msg | int + 1 }}"
+      register: count
+    - name: d5 count.msg
+      debug:
+        msg: "{{ count.msg }}"
+

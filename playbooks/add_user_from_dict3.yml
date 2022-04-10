@@ -16,6 +16,11 @@
         comment: "{{ item.value.first | title }} {{ item.value.middle[0] | title }} {{ item.value.last | title }}"
       with_dict: "{{ users }}"
     - copy:
-        src: "'/tmp/'+{{ item.key }}+'_file'"
-        dest: "'/home/'+{{ item.key }}+'/'+{{ item.key }}+'_file'"
+        src: "/tmp/{{ item.key }}_file"
+        dest: "/home/{{ item.key }}/{{ item.key }}_file"
+      with_dict: "{{ users }}"
+    - file:
+        path: "{{ '/home/' + item.key + '/' + item.key + '_file' }}" 
+        owner: "{{ item.key }}"
+        group: "{{ item.key }}"
       with_dict: "{{ users }}"

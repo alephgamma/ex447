@@ -5,9 +5,14 @@
   vars_files:
     user_dict2.yml
   tasks:
-    - debug:
+    - name: debug 1
+      debug:
         msg: "{{ lookup('password','/tmp/'+item.key+'_file length=10') }}"
+      register: p
       with_dict: "{{ users }}"
+    - name: debug 2
+      debug:
+        msg: "{{ p }}"
     - user: 
         name: "{{ item.key }}"
         password: "{{ lookup('file','/tmp/'+item.key+'_file') | password_hash('sha512')}}"
