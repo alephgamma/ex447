@@ -1,0 +1,12 @@
+---
+- name: remove users from list
+  hosts: all
+  become: true
+  vars_files:
+    user_dict2.yml
+  tasks:
+
+    - user: 
+        name: "{{ item.key }}"
+        state: absent
+      with_dict: "{{ users }}"
