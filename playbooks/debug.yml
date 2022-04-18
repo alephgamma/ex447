@@ -1,0 +1,17 @@
+---
+- name: debug test playbook
+  become: true
+  hosts: all
+  tasks:
+    - name: debug loop 1
+      debug:
+        msg: "Loop 1: {{ item }}"
+      loop:
+        - 1
+        - 2 
+        - 3
+    - name: debug loop 2
+      debug:
+        msg: "Loop 2: {{ item }}"
+      loop:
+        [ 1, 2, 3 ]
