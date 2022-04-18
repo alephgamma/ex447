@@ -19,7 +19,7 @@
         - 3 
     - systemd:
         name: stress{{ item }}.service
-        state: stopped
+        state: started
         enabled: no
       loop:
         [ 1, 2, 3 ]

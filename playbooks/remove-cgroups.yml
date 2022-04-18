@@ -1,9 +1,20 @@
 ---
-- name: remove group services
+- name: cgroups
   become: true
   hosts: all
+  vars:
+    packages:
+      - daemonize
+      - stress
   tasks:
-     - systemd:
-        name: stress1.service
+
+    - systemd:
+        name: stress{{ item }}.service
         state: stopped
         enabled: no
+      loop:
+        [ 1, 2, 3 ]
+
+    - yum:
+        name: "{{ packages }}"
+        state: absent
